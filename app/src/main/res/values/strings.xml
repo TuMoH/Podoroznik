@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Podoroznik</string>
+    <string name="welcome">Приложите карту</string>
+    <string name="balance">Balance: %1$s</string>
+</resources>
