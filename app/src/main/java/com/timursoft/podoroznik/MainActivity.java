@@ -11,6 +11,8 @@ import java.io.IOException;
 
 public class MainActivity extends Activity {
 
+    private static final String KEY_TEXT = "KEY_TEXT";
+
     private TextView textView;
 
     @Override
@@ -40,19 +42,19 @@ public class MainActivity extends Activity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-//            info.append("\nCard UID: " + dump.uidAsString)
-//            info.append("\n\n  --- Sector #4: ---\n")
-//            val blocks = dump.dataAsStrings
-//            for (i in blocks.indices) {
-//                info.append("\n" + i + "] " + blocks[i])
-//            }
-//            info.append("\n\n  --- Extracted data: ---\n")
-//            info.append("\nCard number:      " + dump.cardNumberAsString)
-//            info.append("\nCurrent balance:  " + dump.balanceAsString)
-//            info.append("\nLast usage date:  " + dump.lastUsageDateAsString)
-//            info.append("\nLast validator:   " + dump.lastValidatorIdAsString)
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(KEY_TEXT, textView.getText().toString());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        textView.setText(savedInstanceState.getString(KEY_TEXT));
     }
 
 }
